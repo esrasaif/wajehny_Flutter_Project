@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720202559365",
+    "project_id": "se2-project-dca8b",
+    "storage_bucket": "se2-project-dca8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720202559365:android:d4c6ddea7e7a266ef65eec",
+        "android_client_info": {
+          "package_name": "com.example.wajehny"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU1qN6sJRW4ood-e4yKipMLtU-SpjgO_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
