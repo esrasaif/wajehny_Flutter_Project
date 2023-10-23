@@ -1,11 +1,16 @@
+import 'package:wajehny/main_page.dart';
+
 import 'screencs/logIn_screen.dart';
+import 'screencs/signUp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
-  //the following 2 lines to connect the project with the database
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -19,10 +24,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wajehny',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LogIn(),
+      // theme: ThemeData(
+      //   appBarTheme: AppBarTheme(
+      //   backgroundColor: const Color.fromARGB(255, 176, 61, 61)),
+      //   primarySwatch: Colors.blue,
+      // ),
+      home: const Main_Page(),
+      routes: {"signup": (context) => SignUp(), "login": (context) => LogIn()},
     );
   } //end widget
 } //end class
+
