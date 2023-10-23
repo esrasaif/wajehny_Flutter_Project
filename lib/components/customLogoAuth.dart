@@ -10,12 +10,9 @@ class CustomLogoAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        "images/logoWajenhyttt.png",
-        fit: BoxFit
-            .contain, // Adjust the fit property to control how the image scales
-
-        // height: 600,
-        // width: 600,
+        "images/logo.png",
+        height: 250,
+        width: 250,
       ),
     );
   } //end widget
