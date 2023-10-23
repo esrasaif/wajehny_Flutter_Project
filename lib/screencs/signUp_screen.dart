@@ -11,8 +11,8 @@ class SignUp extends StatefulWidget {
   @override
   State<SignUp> createState() => _SignUpState();
 }
-
 class _SignUpState extends State<SignUp> {
+  //here i defined all the controllers to used when store the data in the database
   final _firstname = TextEditingController();
   final _lastname = TextEditingController();
   final _email = TextEditingController();
@@ -21,11 +21,42 @@ class _SignUpState extends State<SignUp> {
   final _password = TextEditingController();
   final _confirmPassword = TextEditingController();
 
+//the firebasestore consist of collection and many documents inside it so here we create our collection
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  Future<void> addUser() {
+//this methos will first check if the textfileds are empty ,if it empty wont allow to excute the rest of function and it will print statement 
+//then it will check if the both passwords the same?will pass else wont allow allow to excute the rest of function and it will print statement 
+//after checking all of this it wil store the data as new document inside the collection where we created previously
+  void addUser() {
+    final firstName = _firstname.text;
+    final lastName = _lastname.text;
+    final email = _email.text;
+    final phone = _phone.text;
+    final universityName = _universityName.text;
+    final password = _password.text;
+    final confirmPassword = _confirmPassword.text;
+
+    // Check for empty fields
+    if (firstName.isEmpty ||
+        lastName.isEmpty ||
+        email.isEmpty ||
+        phone.isEmpty ||
+        universityName.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty) {
+      print('All fields must be filled out');
+      return;
+    }
+
+    // Check if passwords match
+    if (password != confirmPassword) {
+      print('Passwords do not match');
+      return;
+    }
+
     // Call the user's CollectionReference to add a new user
-    return users.add({
+
+    users.add({
       'fname': _firstname.text, // John Doe
       'lname': _lastname.text, // Stokes and Sons
       'email': _email.text, // 42
@@ -38,17 +69,26 @@ class _SignUpState extends State<SignUp> {
     }).catchError((error) => print("Failed to add user: $error"));
   }
 
+//here we building our interface
   @override
   Widget build(BuildContext context) {
+
+    //this is the root widget
     return Scaffold(
+
+      //here we determine the background color to the interface and determine the appbar for the interface
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         backgroundColor: Colors.grey[50],
         iconTheme: IconThemeData(color: Color.fromRGBO(18, 116, 190, 1)),
       ),
+
+      //here we create a space between the components of the interface and the border of the interface app
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
+
+            //here we apply padding for all the compnents in the interface
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
@@ -56,19 +96,6 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   // //logo
                   const CustomLogoAuth(),
-                  // SizedBox(
-                  //   height: 200,
-                  //   width: 200,
-                  //   child: Image(
-                  //     image: AssetImage('images/logoWajehny.png'),
-                  //     // height: 500,
-                  //     // width: 400,
-                  //   ),
-                  // ),
-
-                  // put space between widges
-                  //title
-
                   Text(
                     'Sign Up',
                     style: GoogleFonts.robotoCondensed(
@@ -294,22 +321,3 @@ class _SignUpState extends State<SignUp> {
   }
 }
 
-
-  //  Padding(
-  //                 padding: const EdgeInsets.symmetric(horizontal: 25),
-  //                 child: Container(
-  //                   padding: EdgeInsets.all(16),
-  //                   decoration: BoxDecoration(
-  //                       color: Color.fromRGBO(18, 116, 190, 1),
-  //                       borderRadius: BorderRadius.circular(12)),
-  //                   child: Center(
-  //                       child: CustomButtonAuth(
-  //                     title: 'Sign Up',
-  //                     onPressed: () {addUser()} ,
-  //                     style: GoogleFonts.robotoCondensed(
-  //                         color: Color.fromARGB(255, 255, 255, 255),
-  //                         fontSize: 20,
-  //                         fontWeight: FontWeight.bold),
-                          
-  //                   )),
-  //                 )),

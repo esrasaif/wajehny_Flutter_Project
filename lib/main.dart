@@ -1,3 +1,4 @@
+import 'package:wajehny/homepage.dart';
 import 'package:wajehny/main_page.dart';
 
 import 'screencs/logIn_screen.dart';
@@ -24,13 +25,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wajehny',
-      // theme: ThemeData(
-      //   appBarTheme: AppBarTheme(
-      //   backgroundColor: const Color.fromARGB(255, 176, 61, 61)),
-      //   primarySwatch: Colors.blue,
-      // ),
       home: const Main_Page(),
-      routes: {"signup": (context) => SignUp(), "login": (context) => LogIn()},
+      routes: {
+        "signup": (context) => SignUp(),
+        "login": (context) => LogIn(),
+        "homepage": (context) => HomePage()
+      },
     );
   } //end widget
 } //end class

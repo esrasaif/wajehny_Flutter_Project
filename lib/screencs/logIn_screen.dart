@@ -68,28 +68,8 @@ class _LogInState extends State<LogIn> {
                 mainAxisAlignment: MainAxisAlignment.center,
 
                 children: [
-                  //  Color.fromRGBO(18, 116, 190, 1),
-
                   //logo
                   CustomLogoAuth(),
-                  // // SizedBox(height: 80),
-                  // SizedBox(
-                  //   height: 200,
-                  //   width: 200,
-                  //   child: Image(
-                  //     image: AssetImage('images/logoWajehny.png'),
-                  //     // height: 500,
-                  //     // width: 400,
-                  //   ),
-                  // ),
-
-                  // .asset(
-                  //   "images/logoWajenhy.png",
-                  //   height: 150,
-                  // ),
-                  //put space between widges
-                  //title
-
                   Container(
                       // color: Color.fromRGBO(18, 116, 190, 1),
                       width: double.infinity, // Full width
